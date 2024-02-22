@@ -1,11 +1,11 @@
 :root {
     font-size: 62.5%;
     --background-color: #7a4067;
-    --screen-color: #E5699C;
-    --box-color: #9665E6;
+    --screen-color: #f5eff2;
+    --box-color: #d6bffa;
     --button-text-color: #E599C7;
-    --button-number-color: #666;
-    --complementary-color: #B19EE6;
+    --button-number-color: #B19EE6;
+    --complementary-color: #666;
 }
 
 * {
@@ -14,7 +14,7 @@
     box-sizing: border-box;
     font-size: 1.6rem;
     font-family: "Press Start 2P", system-ui;
-    color: white;
+    color: rgb(90, 73, 90);
 }
 
 body {
@@ -22,4 +22,96 @@ body {
     place-content: center;
     background: var(--background-color);
     padding: 2.4rem;
+}
+
+.container {
+    height: 90vh;
+    width: 90vw;
+}
+
+.calculator {
+    width: 100%;
+    height: 100%;
+    background: var(--box-color);
+    border-radius: 8px;
+    padding: 2.4rem;
+    box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin-top: 1.6rem;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.screen {
+    background: var(--screen-color);
+    width: 100%;
+    height: 12rem;
+    border-radius: 8px;
+    margin-top: 3.2rem;
+    box-shadow: inset 0px 0px 12px 1px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.expression {
+    position: absolute;
+    bottom: 2rem;
+    right: 2.8rem;
+    font-size: clamp(1.6rem, 3.5vw, 3.2rem);
+    color: var(--button-text-color);
+}
+
+.expressionDisplay {
+    position: absolute;
+    bottom: 5.2rem;
+    right: 2.8rem;
+    font-size: clamp(0.8rem, 2.5vw, 2.4rem);
+    color: var(--button-number-color);
+}
+
+.gridButtons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(5rem, 1fr));
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.8rem;
+    margin-top: 3.2rem;
+}
+
+.gridButtons button {
+    text-align: center;
+    border-radius: 8px;
+    padding: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    height: clamp(1.6rem, 13vw, 9.6rem);
+    cursor: pointer;
+}
+
+.gridButtons .text {
+    background: var(--button-text-color);
+}
+
+.gridButtons .number {
+    background: var(--button-number-color);
+}
+
+.gridButtons .equals {
+    background: var(--complementary-color);
+    grid-column: span 2;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3.2rem;
+}
+
+footer a {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    padding: 1.2rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
