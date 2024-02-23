@@ -1,12 +1,12 @@
 :root {
     font-size: 62.5%;
   
-    --background-color: #252525;
-    --screen-color: #bbbfaa;
-    --box-color: #333333;
-    --button-text-color: #454545;
-    --button-number-color: #666666;
-    --complementary-color: #f27830;
+    --background-color: #5b3c50;
+    --screen-color: #f8f9f5;
+    --box-color: #f5abd9;
+    --button-text-color: #795c74;
+    --button-number-color: #9a588b;
+    --complementary-color: #a80572;
   }
   
   * {
@@ -15,7 +15,7 @@
     box-sizing: border-box;
   
     font-size: 1.6rem;
-    color: white;
+    color: rgb(247, 240, 246);
     font-family: "Press Start 2P", system-ui;
   }
   
