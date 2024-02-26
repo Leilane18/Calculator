@@ -1,11 +1,24 @@
 const expression = document.querySelector(".expression");
 const expressionDisplay = document.querySelector(".expressionDisplay");
 const buttons = document.querySelectorAll(".gridButtons button");
+const buttonlHistory = document.querySelector(".buttonHistory");
+const modalHistory = document.querySelector(".modalHistory");
+const buttonCloseModal = document.querySelector(".buttonCloseModal");
+
+modalHistory.showModal();
+
+buttonlHistory.addEventListener("click", () => {
+  modalHistory.showModal();
+});
+
+buttonCloseModal.addEventListener("click", () => {
+  modalHistory.close();
+});
 
 function clearScreen() {
   expression.innerHTML = "";
   expressionDisplay.innerHTML = "";
-}
+};
 
 const totalNumbers = 13;
 let isError = false;
