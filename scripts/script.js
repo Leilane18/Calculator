@@ -4,11 +4,12 @@ const buttons = document.querySelectorAll(".gridButtons button");
 const buttonlHistory = document.querySelector(".buttonHistory");
 const modalHistory = document.querySelector(".modalHistory");
 const buttonCloseModal = document.querySelector(".buttonCloseModal");
-
-modalHistory.showModal();
+const containerHistory = document.querySelector(".containerHistory");
+const buttonClearHistory = document.querySelector(".buttonClearHistory");
 
 buttonlHistory.addEventListener("click", () => {
   modalHistory.showModal();
+  updateHistory();
 });
 
 buttonCloseModal.addEventListener("click", () => {
@@ -18,7 +19,27 @@ buttonCloseModal.addEventListener("click", () => {
 function clearScreen() {
   expression.innerHTML = "";
   expressionDisplay.innerHTML = "";
-};
+}
+
+function updateHistory() {
+  const calculatorHistory = JSON.parse(
+    localStorage.getItem("@calculator:history")
+  );
+    containerHistory.innerHTML = "";
+  if (calculatorHistory) {
+    calculatorHistory.forEach((value) => {
+      containerHistory.innerHTML += `
+      <div class="boxHistory">
+        <div class="expressionHistory">${value.expression}}</div>
+        <div class="resultHistory">${value.result}</div>
+      </div>
+      `;
+    });
+  } else {
+    console.log(calculatorHistory);
+    containerHistory.innerHTML = `<div class="emptyHistory">Vazio</div>`;
+  }
+}
 
 const totalNumbers = 13;
 let isError = false;
@@ -43,6 +64,33 @@ buttons.forEach((button) => {
             expression.innerHTML = String(
               eval(expression.innerHTML.replace("x", "*").replace("%", "/100"))
             ).slice(0, totalNumbers);
+          }
+
+          const calculatorHistory = JSON.parse(
+            localStorage.getItem("@calculator:history")
+          );
+
+          if (calculatorHistory) {
+            localStorage.setItem(
+              "@calculator:history",
+              JSON.stringify([
+                ...calculatorHistory,
+                {
+                  result: expression.innerHTML,
+                  expression: expressionDisplay.innerHTML,
+                },
+              ])
+            );
+          } else {
+            localStorage.setItem(
+              "@calculator:history",
+              JSON.stringify([
+                {
+                  result: expression.innerHTML,
+                  expression: expressionDisplay.innerHTML,
+                },
+              ])
+            );
           }
         } catch (error) {
           console.error(error);
